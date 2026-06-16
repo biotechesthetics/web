@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biotech Esthetics | Ciencia y tecnología para tu piel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-dark: #0B4A43;
+    --teal-mid: #1B7A6E;
+    --teal-light: #2FA89A;
+    --gold: #C9A257;
+    --gold-light: #E6C87A;
+    --cream: #F8F6F2;
+    --white: #FFFFFF;
+    --dark: #111111;
+    --gray: #555555;
+    --gray-light: #E8E5E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(11,74,67,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,162,87,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-top {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.35rem;
+    color: var(--white);
+    letter-spacing: 0.12em;
+  }
+
+  .logo-bottom {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+
+  .logo-tagline {
+    font-size: 0.55rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.08em;
+    margin-top: 1px;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    font-weight: 400;
+  }
+
+  nav a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold) !important;
+    color: var(--teal-dark) !important;
+    padding: 0.55rem 1.4rem !important;
+    border-radius: 50px;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    transition: background 0.3s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold-light) !important;
+    transform: translateY(-1px);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #061e1b 0%, #0B4A43 45%, #0f5549 70%, #061e1b 100%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 10rem 5vw 7rem;
+  }
+
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.12;
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(110vh) scale(0.8); opacity: 0; }
+    10% { opacity: 0.12; }
+    90% { opacity: 0.12; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+  }
+
+  .dna-bg {
+    position: absolute;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 600px;
+    opacity: 0.06;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 1.6rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.72);
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 2.8rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--gold);
+    color: var(--teal-dark);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,162,87,0.35);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.85);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 400;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .stat-item {
+    text-align: left;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== BRAND STRIP ===== */
+  .brand-strip {
+    background: var(--gold);
+    padding: 1.2rem 5vw;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .brand-strip span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+  }
+
+  /* ===== INTRO ===== */
+  .intro {
+    padding: 7rem 5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    background: var(--white);
+  }
+
+  .intro-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--teal-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-text h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .intro-text p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--gray);
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .intro-text p strong {
+    color: var(--teal-dark);
+    font-weight: 500;
+  }
+
+  .intro-visual {
+    position: relative;
+  }
+
+  .intro-card-main {
+    background: linear-gradient(145deg, var(--teal-dark), var(--teal-mid));
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-card-main::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 350px;
+    height: 350px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+
+  .intro-card-main .big-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.5;
+  }
+
+  .intro-card-main blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 1.5rem;
+  }
+
+  .intro-card-main .cite {
+    font-size: 0.82rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+  }
+
+  .intro-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--gold);
+    color: var(--teal-dark);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    z-index: 10;
+  }
+
+  .intro-badge .badge-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .intro-badge .badge-text {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-align: center;
+    padding: 0 10px;
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+
+  /* ===== SERVICES ===== */
+  .services {
+    padding: 7rem 5vw;
+    background: var(--cream);
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 4rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--teal-dark);
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.2rem 2rem;
+    border: 1px solid var(--gray-light);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal-mid), var(--gold));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(11,74,67,0.1);
+    border-color: transparent;
+  }
+
+  .service-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, rgba(27,122,110,0.1), rgba(201,162,87,0.1));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.4rem;
+    font-size: 1.6rem;
+    position: relative;
+  }
+
+  .service-num {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--teal-mid);
+    color: var(--white);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.6rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .service-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--teal-dark);
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ===== WHY US ===== */
+  .why-us {
+    padding: 7rem 5vw;
+    background: linear-gradient(145deg, var(--teal-dark) 0%, #0f5549 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-us::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: rgba(201,162,87,0.05);
+    border-radius: 50%;
+  }
+
+  .why-us .section-header h2 { color: var(--white); }
+  .why-us .section-header p { color: rgba(255,255,255,0.65); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .why-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    transition: all 0.3s;
+  }
+
+  .why-item:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(201,162,87,0.3);
+  }
+
+  .why-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .why-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+
+  .why-item p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ===== PROCESS ===== */
+  .process {
+    padding: 7rem 5vw;
+    background: var(--white);
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 32px; left: 80px; right: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--teal-mid), var(--gold));
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem;
+  }
+
+  .step-circle {
+    width: 64px;
+    height: 64px;
+    background: var(--teal-dark);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 auto 1.5rem;
+    border: 4px solid var(--white);
+    box-shadow: 0 0 0 2px var(--teal-mid);
+  }
+
+  .step:nth-child(4) .step-circle {
+    background: var(--gold);
+    box-shadow: 0 0 0 2px var(--gold);
+    color: var(--teal-dark);
+  }
+
+  .step h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--teal-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    padding: 7rem 5vw;
+    background: var(--cream);
+    text-align: center;
+  }
+
+  .cta-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    color: var(--teal-dark);
+    line-height: 1.25;
+    margin-bottom: 1.2rem;
+  }
+
+  .cta-inner h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .cta-inner p {
+    font-size: 1.05rem;
+    color: var(--gray);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #25D366;
+    color: var(--white);
+    padding: 1.1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 8px 30px rgba(37,211,102,0.25);
+  }
+
+  .btn-whatsapp:hover {
+    background: #1ebe5c;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(37,211,102,0.35);
+  }
+
+  .btn-whatsapp svg { flex-shrink: 0; }
+
+  .cta-note {
+    margin-top: 1.5rem;
+    font-size: 0.82rem;
+    color: rgba(85,85,85,0.7);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--teal-dark);
+    color: rgba(255,255,255,0.65);
+    padding: 3.5rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-logo .logo-top { font-size: 1.1rem; color: var(--white); }
+  .footer-logo .logo-bottom { color: var(--gold); font-size: 0.65rem; }
+
+  footer p {
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  footer a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.82rem;
+  }
+
+  /* ===== FLOATING WHATSAPP ===== */
+  .float-wa {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    background: #25D366;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 25px rgba(37,211,102,0.45);
+    text-decoration: none;
+    transition: all 0.3s;
+    animation: pulse-wa 3s ease infinite;
+  }
+
+  .float-wa:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 35px rgba(37,211,102,0.55);
+  }
+
+  @keyframes pulse-wa {
+    0%, 100% { box-shadow: 0 6px 25px rgba(37,211,102,0.45); }
+    50% { box-shadow: 0 6px 40px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.1); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    .intro { grid-template-columns: 1fr; gap: 3rem; }
+    .intro-badge { bottom: -15px; left: 10px; width: 90px; height: 90px; }
+    .intro-badge .badge-num { font-size: 1.4rem; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    .hero-stats { gap: 2rem; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 8rem 5vw 5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <span class="logo-top">BIOTECH<span style="color:var(--gold)"> ESTHETICS</span></span>
+    <span class="logo-bottom">Ciencia y tecnología para tu piel</span>
+  </div>
+  <ul>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="https://wa.me/51979701441" class="nav-cta">Agendar cita</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-particles" id="particles"></div>
+
+  <!-- DNA BG decoration -->
+  <svg class="dna-bg" viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="white">
+      <!-- DNA helix lines -->
+      <path d="M60 0 Q140 30 60 60 Q-20 90 60 120 Q140 150 60 180 Q-20 210 60 240 Q140 270 60 300 Q-20 330 60 360 Q140 390 60 420 Q-20 450 60 480 Q140 510 60 540 Q-20 570 60 600" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M140 0 Q60 30 140 60 Q220 90 140 120 Q60 150 140 180 Q220 210 140 240 Q60 270 140 300 Q220 330 140 360 Q60 390 140 420 Q220 450 140 480 Q60 510 140 540 Q220 570 140 600" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Rungs -->
+      <line x1="60" y1="30" x2="140" y2="30" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="90" x2="140" y2="90" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="150" x2="140" y2="150" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="210" x2="140" y2="210" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="270" x2="140" y2="270" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="330" x2="140" y2="330" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="390" x2="140" y2="390" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="450" x2="140" y2="450" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="510" x2="140" y2="510" stroke-width="1.5" stroke-dasharray="3 2"/>
+      <line x1="60" y1="570" x2="140" y2="570" stroke-width="1.5" stroke-dasharray="3 2"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ Rejuvenecimiento facial avanzado</p>
+    <h1>Despierta la <em>mejor versión</em> de tu piel</h1>
+    <p class="hero-sub">
+      En Biotech Esthetics fusionamos ciencia de vanguardia y tecnología de alta precisión para transformar tu piel desde adentro. Resultados reales, visibles desde la primera sesión.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/51979701441?text=Hola,%20quiero%20agendar%20una%20cita" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Agenda tu cita ahora
+      </a>
+      <a href="#servicios" class="btn-outline">Ver tratamientos ↓</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Tecnologías avanzadas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">No invasivo</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">1ª</span>
+        <span class="stat-label">Sesión = resultados visibles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STRIP -->
+<div class="brand-strip">
+  <span>✦ Limpieza Facial</span>
+  <span>✦ Ultrasonido</span>
+  <span>✦ Radiofrecuencia</span>
+  <span>✦ EMS</span>
+  <span>✦ Crioterapia</span>
+  <span>✦ Fototerapia</span>
+</div>
+
+<!-- INTRO / ABOUT -->
+<section class="intro" id="nosotros">
+  <div class="intro-text reveal">
+    <span class="section-eyebrow">Quiénes somos</span>
+    <h2>Ciencia al servicio de tu <em>belleza natural</em></h2>
+    <p>
+      En Biotech Esthetics no creemos en los milagros instantáneos. Creemos en la ciencia. Cada tratamiento que ofrecemos está respaldado por tecnología de última generación, diseñada para trabajar en armonía con los procesos naturales de tu piel.
+    </p>
+    <p>
+      <strong>Tu piel tiene el potencial de renovarse.</strong> Nosotros le damos las herramientas para hacerlo. Desde la estimulación del colágeno hasta la regeneración celular, cada sesión en Biotech Esthetics es una inversión en la versión más radiante de ti misma.
+    </p>
+    <p>
+      Sin cirugías. Sin tiempos de recuperación. Solo ciencia y resultados.
+    </p>
+    <a href="https://wa.me/51979701441?text=Quiero%20saber%20más%20sobre%20sus%20servicios" class="btn-primary" style="margin-top:1rem; display:inline-flex;">Habla con nosotros</a>
+  </div>
+  <div class="intro-visual reveal" style="position:relative; padding-bottom: 30px;">
+    <div class="intro-card-main">
+      <!-- <div class="big-quote">"</div> -->
+      <blockquote>
+        La piel que tienes hoy no es la piel que tendrás mañana — y eso es exactamente el poder de la tecnología estética.
+      </blockquote>
+      <span class="cite">— Biotech Esthetics</span>
+    </div>
+    <div class="intro-badge">
+      <span class="badge-num">100%</span>
+      <span class="badge-text">No invasivo</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Nuestros tratamientos</span>
+    <h2>6 tecnologías que transforman tu piel</h2>
+    <p>Cada tratamiento está diseñado para una necesidad específica. Juntos, crean un protocolo de rejuvenecimiento completo y personalizado.</p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        💧
+        <span class="service-num">01</span>
+      </div>
+      <h3>Limpieza Facial</h3>
+      <p>La base de toda piel saludable. Eliminamos en profundidad impurezas, células muertas y exceso de sebo, preparando tu piel para absorber al máximo cada tratamiento posterior.</p>
+      <span class="service-tag">Base del protocolo →</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        🔊
+        <span class="service-num">02</span>
+      </div>
+      <h3>Ultrasonido</h3>
+      <p>Ondas ultrasónicas que penetran las capas más profundas de la dermis, transportando activos rejuvenecedores exactamente donde tu piel los necesita. Hidratación y nutrición en tiempo real.</p>
+      <span class="service-tag">Hidratación profunda →</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        ⚡
+        <span class="service-num">03</span>
+      </div>
+      <h3>Radiofrecuencia</h3>
+      <p>Calor controlado que estimula la producción natural de colágeno y elastina. Reafirma, levanta y redefine el contorno facial sin bisturí ni recuperación. El lifting que tu piel produce sola.</p>
+      <span class="service-tag">Lifting natural →</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        💪
+        <span class="service-num">04</span>
+      </div>
+      <h3>EMS — Electroestimulación</h3>
+      <p>Impulsos eléctricos de baja frecuencia que activan y tonifican los músculos faciales. El equivalente a un entrenamiento muscular para tu rostro: firmeza y definición visibles desde la primera sesión.</p>
+      <span class="service-tag">Tonificación muscular →</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        ❄️
+        <span class="service-num">05</span>
+      </div>
+      <h3>Crioterapia Facial</h3>
+      <p>El poder terapéutico del frío reduce la inflamación, contrae los poros, mejora la circulación y otorga una luminosidad inmediata. Tu piel más fresca, más tersa y más radiante al instante.</p>
+      <span class="service-tag">Luminosidad inmediata →</span>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        🌟
+        <span class="service-num">06</span>
+      </div>
+      <h3>Fototerapia LED</h3>
+      <p>Luz LED de alta precisión que estimula la regeneración celular, combate el envejecimiento prematuro, unifica el tono y trata el acné activo desde la raíz. Tecnología que el tiempo no puede detener.</p>
+      <span class="service-tag">Regeneración celular →</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Por qué elegirnos</span>
+    <h2>Donde la ciencia y el cuidado se encuentran</h2>
+    <p style="color:rgba(255,255,255,0.6)">Cada detalle en Biotech Esthetics está pensado para darte la experiencia que mereces.</p>
+  </div>
+
+  <div class="why-grid">
+    <div class="why-item reveal">
+      <span class="why-icon">🧬</span>
+      <h3>Tecnología de vanguardia</h3>
+      <p>Equipos de última generación que garantizan tratamientos efectivos, precisos y completamente seguros.</p>
+    </div>
+    <div class="why-item reveal">
+      <span class="why-icon">🎯</span>
+      <h3>Protocolo personalizado</h3>
+      <p>Evaluamos tu piel antes de cada sesión para diseñar el tratamiento exacto que necesitas en ese momento.</p>
+    </div>
+    <div class="why-item reveal">
+      <span class="why-icon">✨</span>
+      <h3>Resultados desde la 1ª sesión</h3>
+      <p>No tienes que esperar semanas para ver cambios. Tu piel responde de forma visible e inmediata.</p>
+    </div>
+    <div class="why-item reveal">
+      <span class="why-icon">🤍</span>
+      <h3>100% no invasivo</h3>
+      <p>Sin agujas, sin cirugía, sin tiempo de recuperación. Sal de nuestra sala lista para seguir tu día.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Así funciona</span>
+    <h2>Tu primera cita en 4 pasos</h2>
+    <p>Desde que nos contactas hasta que ves resultados — todo es simple, transparente y personalizado para ti.</p>
+  </div>
+
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-circle">1</div>
+      <h3>Contáctanos</h3>
+      <p>Escríbenos por WhatsApp y cuéntanos qué quieres mejorar de tu piel. Sin compromisos.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-circle">2</div>
+      <h3>Evaluación gratuita</h3>
+      <p>Analizamos el estado actual de tu piel y definimos el protocolo ideal para tus objetivos.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-circle">3</div>
+      <h3>Tu sesión</h3>
+      <p>Aplicamos el tratamiento personalizado en un ambiente profesional y relajante. Sin dolor.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-circle">4</div>
+      <h3>Resultados reales</h3>
+      <p>Tu piel habla por sí sola. Diseñamos un plan de continuidad para resultados duraderos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <span class="section-eyebrow">El momento es ahora</span>
+    <h2>Tu piel está lista para <em>transformarse</em></h2>
+    <p>
+      Cada día que pasa es una oportunidad de renovación que tu piel está esperando. Agenda hoy tu primera sesión y descubre lo que la ciencia puede hacer por ti. Estamos a un mensaje de distancia.
+    </p>
+    <a href="https://wa.me/51979701441?text=Hola%2C%20me%20gustaría%20agendar%20una%20cita%20en%20Biotech%20Esthetics%20🌿" class="btn-whatsapp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escríbenos al 979-701-441
+    </a>
+    <p class="cta-note">Respondemos en minutos • Agenda sin compromiso</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="logo-top">BIOTECH <span style="color:var(--gold)">ESTHETICS</span></span>
+    <span class="logo-bottom">Ciencia y tecnología para tu piel</span>
+  </div>
+  <p>© 2025 Biotech Esthetics. Todos los derechos reservados.</p>
+  <a href="https://wa.me/51979701441">📱 979-701-441</a>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/51979701441?text=Hola%2C%20quiero%20información%20sobre%20sus%20tratamientos%20faciales%20✨" class="float-wa" title="Contactar por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Floating particles in hero
+  const container = document.getElementById('particles');
+  const colors = ['#C9A257','#1B7A6E','#ffffff','#E6C87A','#2FA89A'];
+  for (let i = 0; i < 22; i++) {
+    const p = document.createElement('div');
+    const size = Math.random() * 6 + 3;
+    p.className = 'particle';
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*15 + 12}s;
+      animation-delay:${Math.random()*10}s;
+    `;
+    container.appendChild(p);
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav shadow on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,0.25)' : 'none';
+  });
+</script>
+</body>
+</html>
